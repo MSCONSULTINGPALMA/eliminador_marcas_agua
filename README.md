@@ -41,6 +41,9 @@ ln -sfn "$(pwd)/skills/remove-ai-marks" .grok/skills/remove-ai-marks
 # User-global Grok
 mkdir -p ~/.grok/skills
 ln -sfn "$(pwd)/skills/remove-ai-marks" ~/.grok/skills/remove-ai-marks
+
+# Claude Code / project-local
+make install-skill-claude   # or: mkdir -p .claude/skills && ln -sfn ../../skills/remove-ai-marks .claude/skills/remove-ai-marks
 ```
 
 Invoke with `/remove-ai-marks` or ask to “strip AI watermarks / C2PA / Claude marks / SynthID-class text.”
