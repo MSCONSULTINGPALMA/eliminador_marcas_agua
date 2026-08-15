@@ -3,7 +3,7 @@
 	smoke-markllm bootstrap-markllm docker-markllm-build docker-markllm-help \
 	smoke-markdiffusion bootstrap-markdiffusion docker-markdiffusion-build docker-markdiffusion-help \
 	docker-core-build docker-core-help serve compose-up compose-up-heavy compose-check \
-	install-skill clean
+	install-skill install-skill-claude clean
 
 SCRIPTS := service/scripts
 PYTHON ?= $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python3; fi)
@@ -109,6 +109,11 @@ install-skill:
 	mkdir -p $(HOME)/.grok/skills
 	ln -sfn $(CURDIR)/skills/remove-ai-marks $(HOME)/.grok/skills/remove-ai-marks
 	@echo "linked -> $(HOME)/.grok/skills/remove-ai-marks"
+
+install-skill-claude:
+	mkdir -p .claude/skills
+	ln -sfn ../../skills/remove-ai-marks .claude/skills/remove-ai-marks
+	@echo "linked -> .claude/skills/remove-ai-marks"
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
